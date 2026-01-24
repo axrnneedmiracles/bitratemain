@@ -3,15 +3,17 @@
 import { useEffect, useRef } from 'react';
 // @ts-ignore
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
+import { cn } from '@/lib/utils';
 
 const MAX_COLORS = 8;
-const hexToRGB = (hex: string) => {
+const hexToRGB = (hex: string): number[] => {
   const c = hex.replace('#', '').padEnd(6, '0');
   const r = parseInt(c.slice(0, 2), 16) / 255;
   const g = parseInt(c.slice(2, 4), 16) / 255;
   const b = parseInt(c.slice(4, 6), 16) / 255;
   return [r, g, b];
 };
+
 const prepStops = (stops: string[] | undefined) => {
   const base = (stops && stops.length ? stops : ['#FF9FFC', '#5227FF']).slice(0, MAX_COLORS);
   if (base.length === 1) base.push(base[0]);
@@ -219,7 +221,7 @@ void main() {
       iTime: { value: 0 },
       uAngle: { value: (angle * Math.PI) / 180 },
       uNoise: { value: noise },
-      uBlindCount: { value: Math.max(1, blindCount ?? 0) },
+      uBlindCount: { value: Math.max(1, blindCount) },
       uSpotlightRadius: { value: spotlightRadius },
       uSpotlightSoftness: { value: spotlightSoftness },
       uSpotlightOpacity: { value: spotlightOpacity },
@@ -260,7 +262,7 @@ void main() {
         const effective = blindCount ? Math.min(blindCount, maxByMinWidth) : maxByMinWidth;
         uniforms.uBlindCount.value = Math.max(1, effective);
       } else {
-        uniforms.uBlindCount.value = Math.max(1, blindCount ?? 0);
+        uniforms.uBlindCount.value = Math.max(1, blindCount);
       }
 
       if (firstResizeRef.current) {
@@ -282,7 +284,7 @@ void main() {
       const x = (e.clientX - rect.left) * scale;
       const y = (rect.height - (e.clientY - rect.top)) * scale;
       mouseTargetRef.current = [x, y];
-      if (mouseDampening != null && mouseDampening <= 0) {
+      if (mouseDampening <= 0) {
         uniforms.iMouse.value = [x, y];
       }
     };
@@ -291,7 +293,7 @@ void main() {
     const loop = (t: number) => {
       rafRef.current = requestAnimationFrame(loop);
       uniforms.iTime.value = t * 0.001;
-      if (mouseDampening != null && mouseDampening > 0) {
+      if (mouseDampening > 0) {
         if (!lastTimeRef.current) lastTimeRef.current = t;
         const dt = (t - lastTimeRef.current) / 1000;
         lastTimeRef.current = t;
@@ -356,7 +358,7 @@ void main() {
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full overflow-hidden relative ${className ?? ''}`}
+      className={cn('w-full h-full overflow-hidden relative', className)}
       style={{
         ...(mixBlendMode && {
           mixBlendMode: mixBlendMode
