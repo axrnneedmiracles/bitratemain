@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { Header } from '@/components/layout/header';
 import LightPillar from '@/components/light-pillar';
 
 export const metadata: Metadata = {
@@ -29,7 +28,7 @@ export default function RootLayout({
           <LightPillar
             topColor="#5227FF"
             bottomColor="#FF9FFC"
-            intensity={1}
+            intensity={2}
             rotationSpeed={0.3}
             glowAmount={0.002}
             pillarWidth={3}
@@ -44,7 +43,6 @@ export default function RootLayout({
         <div className="fixed inset-0 bg-black/70 -z-10" />
 
         <div className="relative z-0 flex flex-col min-h-screen">
-          <Header />
           <main className="flex-grow">{children}</main>
         </div>
         <Toaster />
