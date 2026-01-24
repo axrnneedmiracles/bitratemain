@@ -2,11 +2,26 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import LightPillar from '@/components/light-pillar';
+import StaggeredMenu from '@/components/staggered-menu';
 
 export const metadata: Metadata = {
   title: 'Studio Noir',
   description: 'A professional portfolio for a creative media studio.',
 };
+
+const menuItems = [
+  { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+  { label: 'Portfolio', ariaLabel: 'View our portfolio', link: '/portfolio' },
+  { label: 'Services', ariaLabel: 'View our services', link: '/services' },
+  { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+  { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' },
+];
+
+const socialItems = [
+  { label: 'Twitter', link: 'https://twitter.com' },
+  { label: 'GitHub', link: 'https://github.com' },
+  { label: 'LinkedIn', link: 'https://linkedin.com' },
+];
 
 export default function RootLayout({
   children,
@@ -24,6 +39,12 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
+        <StaggeredMenu
+            isFixed={true}
+            items={menuItems}
+            socialItems={socialItems}
+            logoUrl='/studio_logo.png'
+          />
         <div className="fixed inset-0 -z-20">
           <LightPillar
             topColor="#5227FF"
