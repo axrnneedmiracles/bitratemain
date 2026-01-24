@@ -1,3 +1,100 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "team-1",
+      "description": "Portrait of Jane Doe",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2OTIxNzA3MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "team-2",
+      "description": "Portrait of John Smith",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjkyMjQ4NjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "team-3",
+      "description": "Portrait of Alex Ray",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJzb24lMjBzbWlsaW5nfGVufDB8fHx8MTc2OTI4MTY4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person smiling"
+    },
+    {
+      "id": "team-4",
+      "description": "Portrait of Sarah Jones",
+      "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21hbiUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3NjkyNTUwMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman professional"
+    },
+    {
+      "id": "project-urban-cover",
+      "description": "Cover image for Urban Echoes project",
+      "imageUrl": "https://images.unsplash.com/photo-1584696049838-8e692282a2e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjaXR5JTIwc3RyZWV0fGVufDB8fHx8MTc2OTI3NjIzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city street"
+    },
+    {
+      "id": "project-urban-1",
+      "description": "Image 1 for Urban Echoes project",
+      "imageUrl": "https://images.unsplash.com/photo-1615564291478-68e3acb11b5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dXJiYW4lMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzY5MTkxMDg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "urban architecture"
+    },
+    {
+      "id": "project-urban-2",
+      "description": "Image 2 for Urban Echoes project",
+      "imageUrl": "https://images.unsplash.com/photo-1580895456895-cfdf02e4c23f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjaXR5JTIwbmlnaHR8ZW58MHx8fHwxNzY5MjAxMTk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city night"
+    },
+    {
+      "id": "project-innovate-cover",
+      "description": "Cover image for Innovate Co. project",
+      "imageUrl": "https://images.unsplash.com/photo-1759724369762-376e0a29478b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtaW5pbWFsaXN0JTIwZGVzaWdufGVufDB8fHx8MTc2OTI5NDQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist design"
+    },
+    {
+      "id": "project-innovate-1",
+      "description": "Image 1 for Innovate Co. project",
+      "imageUrl": "https://images.unsplash.com/photo-1621460244115-aae28aad2b45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnJhbmQlMjBsb2dvfGVufDB8fHx8MTc2OTE4NzQ2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "brand logo"
+    },
+    {
+      "id": "project-innovate-2",
+      "description": "Image 2 for Innovate Co. project",
+      "imageUrl": "https://images.unsplash.com/photo-1704440325854-5c7f8bcd4e2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxvZmZpY2UlMjBicmFuZGluZ3xlbnwwfHx8fDE3NjkyOTQ0NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "office branding"
+    },
+    {
+      "id": "project-coastal-cover",
+      "description": "Cover image for Coastal Dreams project",
+      "imageUrl": "https://images.unsplash.com/photo-1514747975201-4715db583da9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvY2VhbiUyMHdhdmVzfGVufDB8fHx8MTc2OTI3MjE0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ocean waves"
+    },
+    {
+      "id": "project-coastal-1",
+      "description": "Image 1 for Coastal Dreams project",
+      "imageUrl": "https://images.unsplash.com/photo-1594235206348-f03d8c4ebda0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiZWFjaCUyMGRyb25lfGVufDB8fHx8MTc2OTI1NTY1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach drone"
+    },
+    {
+      "id": "project-coastal-2",
+      "description": "Image 2 for Coastal Dreams project",
+      "imageUrl": "https://images.unsplash.com/photo-1707226370417-e9331a7222b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3Vuc2V0JTIwY29hc3R8ZW58MHx8fHwxNzY5Mjk0NDYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sunset coast"
+    },
+    {
+      "id": "project-forest-cover",
+      "description": "Cover image for Forest Light project",
+      "imageUrl": "https://images.unsplash.com/photo-1657210553921-00750fdbe478?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmb3Jlc3QlMjBzdW5iZWFtfGVufDB8fHx8MTc2OTI5NDQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "forest sunbeam"
+    },
+    {
+      "id": "project-mountain-cover",
+      "description": "Cover image for Mountain Majesty project",
+      "imageUrl": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb3VudGFpbiUyMHBlYWt8ZW58MHx8fHwxNzY5MjY3NzA2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain peak"
+    },
+    {
+      "id": "project-abstract-cover",
+      "description": "Cover image for Abstract Forms project",
+      "imageUrl": "https://images.unsplash.com/photo-1684139517679-032b7213ad2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHNoYXBlc3xlbnwwfHx8fDE3NjkyODU1MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract shapes"
+    }
+  ]
 }
