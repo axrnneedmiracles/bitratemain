@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex-grow flex items-start justify-center pt-32">
       <TextType
         as="h1"
-        text={["welcome to our studio"]}
+        text={["WELCOME TO OUR MEDIA STUDIO"]}
         typingSpeed={100}
         pauseDuration={3000}
         showCursor
