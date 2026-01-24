@@ -8,7 +8,9 @@ export default function Home() {
     { image: '/studio_logo.png', text: 'Studio' },
     { image: '/aftereffects_logo.png', text: 'After Effects' },
     { image: '/cinema4d_logo.png', text: 'Cinema 4D' },
-    { image: '/figma_logo.png', text: 'Figma' }
+    { image: '/figma_logo.png', text: 'Figma' },
+    { image: '/unity_logo.png', text: 'Unity' },
+    { image: '/webdev_logo.png', text: 'Web Dev' }
   ];
 
   return (
