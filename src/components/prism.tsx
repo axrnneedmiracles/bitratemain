@@ -1,28 +1,10 @@
 'use client';
 
-import { useEffect, useRef, FC } from 'react';
+import { useEffect, useRef } from 'react';
 // @ts-ignore
 import { Renderer, Triangle, Program, Mesh } from 'ogl';
 
-type PrismProps = {
-  height?: number;
-  baseWidth?: number;
-  animationType?: 'rotate' | 'hover' | '3drotate';
-  glow?: number;
-  offset?: { x: number; y: number };
-  noise?: number;
-  transparent?: boolean;
-  scale?: number;
-  hueShift?: number;
-  colorFrequency?: number;
-  hoverStrength?: number;
-  inertia?: number;
-  bloom?: number;
-  suspendWhenOffscreen?: boolean;
-  timeScale?: number;
-};
-
-const Prism: FC<PrismProps> = ({
+const Prism = ({
   height = 3.5,
   baseWidth = 5.5,
   animationType = 'rotate',
@@ -39,7 +21,7 @@ const Prism: FC<PrismProps> = ({
   suspendWhenOffscreen = false,
   timeScale = 0.5
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -257,7 +239,7 @@ const Prism: FC<PrismProps> = ({
     resize();
 
     const rotBuf = new Float32Array(9);
-    const setMat3FromEuler = (yawY: number, pitchX: number, rollZ: number, out: Float32Array) => {
+    const setMat3FromEuler = (yawY: any, pitchX: any, rollZ: any, out: any) => {
       const cy = Math.cos(yawY),
         sy = Math.sin(yawY);
       const cx = Math.cos(pitchX),
@@ -313,10 +295,10 @@ const Prism: FC<PrismProps> = ({
       roll = 0;
     let targetYaw = 0,
       targetPitch = 0;
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    const lerp = (a: any, b: any, t: any) => a + (b - a) * t;
 
     const pointer = { x: 0, y: 0, inside: true };
-    const onMove = (e: PointerEvent) => {
+    const onMove = (e: any) => {
       const ww = Math.max(1, window.innerWidth);
       const wh = Math.max(1, window.innerHeight);
       const cx = ww * 0.5;
@@ -334,9 +316,9 @@ const Prism: FC<PrismProps> = ({
       pointer.inside = false;
     };
 
-    let onPointerMove: ((e: PointerEvent) => void) | null = null;
+    let onPointerMove: any = null;
     if (animationType === 'hover') {
-      onPointerMove = e => {
+      onPointerMove = (e: any) => {
         onMove(e);
         startRAF();
       };
@@ -350,7 +332,7 @@ const Prism: FC<PrismProps> = ({
       program.uniforms.uUseBaseWobble.value = 1;
     }
 
-    const render = (t: number) => {
+    const render = (t: any) => {
       const time = (t - t0) * 0.001;
       program.uniforms.iTime.value = time;
 
@@ -411,7 +393,7 @@ const Prism: FC<PrismProps> = ({
       });
       io.observe(container);
       startRAF();
-      (container as any).__prismIO = io;
+      container.__prismIO = io;
     } else {
       startRAF();
     }
@@ -425,9 +407,9 @@ const Prism: FC<PrismProps> = ({
         window.removeEventListener('blur', onBlur);
       }
       if (suspendWhenOffscreen) {
-        const io = (container as any).__prismIO;
+        const io = container.__prismIO;
         if (io) io.disconnect();
-        delete (container as any).__prismIO;
+        delete container.__prismIO;
       }
       if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
     };
