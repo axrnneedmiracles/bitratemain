@@ -143,14 +143,14 @@ const AnimatedList = ({
         ref={listRef}
         className={`max-h-[400px] overflow-y-auto p-4 ${
           displayScrollbar
-            ? '[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-[#060010] [&::-webkit-scrollbar-thumb]:bg-[#222] [&::-webkit-scrollbar-thumb]:rounded-[4px]'
+            ? '[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#222] [&::-webkit-scrollbar-thumb]:rounded-[4px]'
             : 'scrollbar-hide'
         }`}
         onScroll={handleScroll}
         style={{
           scrollbarWidth: displayScrollbar ? 'thin' : 'none',
           // @ts-ignore
-          scrollbarColor: '#222 #060010',
+          scrollbarColor: '#222 transparent',
         }}
       >
         {items.map((item, index) => (
@@ -162,8 +162,8 @@ const AnimatedList = ({
             onClick={() => handleItemClick(item, index)}
           >
             <div
-              className={`p-4 bg-[#111] rounded-lg ${
-                selectedIndex === index ? 'bg-[#222]' : ''
+              className={`p-4 bg-black/20 backdrop-blur-sm rounded-lg ${
+                selectedIndex === index ? 'bg-white/10' : ''
               } ${itemClassName}`}
             >
               <p className="text-white m-0">{item}</p>
@@ -174,11 +174,11 @@ const AnimatedList = ({
       {showGradients && (
         <>
           <div
-            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-[#060010] to-transparent pointer-events-none transition-opacity duration-300 ease"
+            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-black to-transparent pointer-events-none transition-opacity duration-300 ease"
             style={{ opacity: topGradientOpacity }}
           ></div>
           <div
-            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#060010] to-transparent pointer-events-none transition-opacity duration-300 ease"
+            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-black to-transparent pointer-events-none transition-opacity duration-300 ease"
             style={{ opacity: bottomGradientOpacity }}
           ></div>
         </>
