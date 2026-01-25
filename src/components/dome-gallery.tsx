@@ -47,6 +47,7 @@ const wrapAngleSigned = deg => {
   return a - 180;
 };
 const getDataNumber = (el, name, fallback) => {
+  if (!el) return fallback;
   const attr = el.dataset[name] ?? el.getAttribute(`data-${name}`);
   const n = attr == null ? NaN : parseFloat(attr);
   return Number.isFinite(n) ? n : fallback;
@@ -151,11 +152,13 @@ export default function DomeGallery({
 
   const scrollLockedRef = useRef(false);
   const lockScroll = useCallback(() => {
+    if (typeof document === 'undefined') return;
     if (scrollLockedRef.current) return;
     scrollLockedRef.current = true;
     document.body.classList.add('dg-scroll-lock');
   }, []);
   const unlockScroll = useCallback(() => {
+    if (typeof document === 'undefined') return;
     if (!scrollLockedRef.current) return;
     if (rootRef.current?.getAttribute('data-enlarging') === 'true') return;
     scrollLockedRef.current = false;
@@ -262,6 +265,7 @@ export default function DomeGallery({
   }, []);
 
   const stopInertia = useCallback(() => {
+    if (typeof window === 'undefined') return;
     if (inertiaRAF.current) {
       cancelAnimationFrame(inertiaRAF.current);
       inertiaRAF.current = null;
@@ -270,6 +274,7 @@ export default function DomeGallery({
 
   const startInertia = useCallback(
     (vx, vy) => {
+      if (typeof window === 'undefined') return;
       const MAX_V = 1.4;
       let vX = clamp(vx, -MAX_V, MAX_V) * 80;
       let vY = clamp(vy, -MAX_V, MAX_V) * 80;
@@ -391,6 +396,7 @@ export default function DomeGallery({
   );
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const scrim = scrimRef.current;
     if (!scrim) return;
 
@@ -528,6 +534,7 @@ export default function DomeGallery({
   }, [enlargeTransitionMs, openedImageBorderRadius, grayscale]);
 
   const openItemFromElement = el => {
+    if (typeof document === 'undefined') return;
     if (openingRef.current) return;
     openingRef.current = true;
     openStartedAtRef.current = performance.now();
@@ -662,6 +669,7 @@ export default function DomeGallery({
   };
 
   useEffect(() => {
+    if (typeof document === 'undefined') return;
     return () => {
       document.body.classList.remove('dg-scroll-lock');
     };
@@ -811,6 +819,21 @@ export default function DomeGallery({
                     role="button"
                     tabIndex={0}
                     aria-label={it.alt || 'Open image'}
+                    onClick={e => {
+                      if (draggingRef.current) return;
+                      if (movedRef.current) return;
+                      if (performance.now() - lastDragEndAt.current < 80) return;
+                      if (openingRef.current) return;
+                      openItemFromElement(e.currentTarget);
+                    }}
+                    onPointerUp={e => {
+                      if (e.pointerType !== 'touch') return;
+                      if (draggingRef.current) return;
+                      if (movedRef.current) return;
+                      if (performance.now() - lastDragEndAt.current < 80) return;
+                      if (openingRef.current) return;
+                      openItemFromElement(e.currentTarget);
+                    }}
                     style={{
                       inset: '10px',
                       borderRadius: `var(--tile-radius, ${imageBorderRadius})`,
