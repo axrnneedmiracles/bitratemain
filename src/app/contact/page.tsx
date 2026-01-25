@@ -1,5 +1,5 @@
 import { ContactForm } from '@/components/contact-form';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -29,8 +29,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg">Email</h3>
-                <a href="mailto:hello@studionoir.com" className="text-muted-foreground hover:text-accent transition-colors">
-                  hello@studionoir.com
+                <a href="mailto:aryanshekharvats01@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
+                  aryanshekharvats01@gmail.com
                 </a>
                 <p className="text-sm text-muted-foreground/80">For all inquiries</p>
               </div>
@@ -41,18 +41,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg">Phone</h3>
-                <p className="text-muted-foreground">(123) 456-7890</p>
+                <p className="text-muted-foreground">8766233436</p>
                 <p className="text-sm text-muted-foreground/80">Mon-Fri, 9am-5pm</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-accent/10 p-3 rounded-full">
-                <MapPin className="h-6 w-6 text-accent" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg">Office</h3>
-                <p className="text-muted-foreground">123 Creative Lane, New York, NY 10001</p>
-                <p className="text-sm text-muted-foreground/80">By appointment only</p>
               </div>
             </div>
           </div>
