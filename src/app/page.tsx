@@ -10,6 +10,7 @@ export default function Home() {
     { image: '/cinema4d_logo.png', text: 'Cinema 4D' },
     { image: '/figma_logo.png', text: 'Figma' },
     { image: '/unity_logo.png', text: 'Unity' },
+    { image: '/flstudio_logo.png', text: 'FL Studio' },
     { image: '/webdev_logo.png', text: 'Web Dev' },
     { image: '/canva_logo.png', text: 'Canva' },
     { image: '/h_logo.png', text: 'Houdini' },

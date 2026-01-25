@@ -12,7 +12,7 @@ export default function PortfolioPage() {
     { src: '/aftereffects_logo.png', alt: 'After Effects' },
     { src: '/canva_logo.png', alt: 'Canva' },
     { src: '/davinci_logo.png', alt: 'DaVinci Resolve' },
-    { src: 'https://picsum.photos/seed/flstudio/600/400', alt: 'FL Studio' },
+    { src: '/flstudio_logo.png', alt: 'FL Studio' },
     { src: '/unity_logo.png', alt: 'Unity' },
     { src: '/webdev_logo.png', alt: 'Web Dev' },
     { src: '/h_logo.png', alt: 'Houdini' },
