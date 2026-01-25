@@ -1,33 +1,34 @@
-import DomeGallery from '@/components/dome-gallery';
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Portfolio | Studio Noir',
-  description: 'Explore the creative work and projects by Studio Noir.',
-};
+import AnimatedList from '@/components/animated-list';
+
+const portfolioItems = [
+    { name: 'BLENDER', slug: 'blender' },
+    { name: 'DAVINCI', slug: 'davinci' },
+    { name: 'AFTER EFFECTS', slug: 'after-effects' },
+    { name: 'FL STUDIO', slug: 'fl-studio' },
+    { name: 'UNITY', slug: 'unity' },
+    { name: 'HOUDINI', slug: 'houdini' },
+    { name: 'WEB DEV', slug: 'web-dev' },
+    { name: 'CANVA', slug: 'canva' },
+];
 
 export default function PortfolioPage() {
-  const portfolioImages = [
-    { src: '/blender_logo.png', alt: 'Blender' },
-    { src: '/aftereffects_logo.png', alt: 'After Effects' },
-    { src: '/canva_logo.png', alt: 'Canva' },
-    { src: '/davinci_logo.png', alt: 'DaVinci Resolve' },
-    { src: '/flstudio_logo.png', alt: 'FL Studio' },
-    { src: '/unity_logo.png', alt: 'Unity' },
-    { src: '/webdev_logo.png', alt: 'Web Dev' },
-    { src: '/h_logo.png', alt: 'Houdini' },
-  ];
+  const handleSelect = (item: string) => {
+    const selectedItem = portfolioItems.find(p => p.name === item);
+    if (selectedItem) {
+        window.open(`/portfolio/${selectedItem.slug}`, '_blank');
+    }
+  }
 
   return (
-    <div className="w-screen h-screen">
-       <DomeGallery
-          images={portfolioImages}
-          fit={0.8}
-          minRadius={600}
-          maxVerticalRotationDeg={0}
-          segments={34}
-          dragDampening={2}
-          grayscale
+    <div className="w-screen h-screen flex items-center justify-center bg-[#060010]">
+       <AnimatedList
+          items={portfolioItems.map(item => item.name)}
+          onItemSelect={handleSelect}
+          showGradients
+          enableArrowNavigation
+          displayScrollbar={false}
         />
     </div>
   );

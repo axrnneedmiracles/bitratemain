@@ -11,6 +11,7 @@ const portfolioItems = [
   'web-dev',
   'unity',
   'fl-studio',
+  'houdini',
 ];
 
 export async function generateStaticParams() {
