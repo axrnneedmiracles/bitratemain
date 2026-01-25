@@ -8,7 +8,6 @@ const portfolioItems = [
   'davinci',
   'canva',
   'after-effects',
-  'houdini',
   'web-dev',
   'unity',
   'fl-studio',
