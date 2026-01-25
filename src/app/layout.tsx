@@ -45,7 +45,6 @@ export default function RootLayout({
             isFixed={true}
             items={menuItems}
             socialItems={socialItems}
-            logoUrl='/studio_logo.png'
           />
         <div className="fixed inset-0 -z-20">
           <LightPillar
