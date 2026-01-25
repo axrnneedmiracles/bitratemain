@@ -730,6 +730,16 @@ export default function DomeGallery({
       }
     }
     
+    body.dg-scroll-lock {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      touch-action: none !important;
+      overscroll-behavior: contain !important;
+    }
     .item__image {
       position: absolute;
       inset: 10px;
@@ -801,21 +811,6 @@ export default function DomeGallery({
                     role="button"
                     tabIndex={0}
                     aria-label={it.alt || 'Open image'}
-                    onClick={e => {
-                      if (draggingRef.current) return;
-                      if (movedRef.current) return;
-                      if (performance.now() - lastDragEndAt.current < 80) return;
-                      if (openingRef.current) return;
-                      openItemFromElement(e.currentTarget);
-                    }}
-                    onPointerUp={e => {
-                      if (e.pointerType !== 'touch') return;
-                      if (draggingRef.current) return;
-                      if (movedRef.current) return;
-                      if (performance.now() - lastDragEndAt.current < 80) return;
-                      if (openingRef.current) return;
-                      openItemFromElement(e.currentTarget);
-                    }}
                     style={{
                       inset: '10px',
                       borderRadius: `var(--tile-radius, ${imageBorderRadius})`,
