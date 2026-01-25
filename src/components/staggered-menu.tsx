@@ -3,7 +3,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Home } from 'lucide-react';
 
 // Type definitions for props
 type MenuItem = {
@@ -25,7 +25,6 @@ type StaggeredMenuProps = {
   displaySocials?: boolean;
   displayItemNumbering?: boolean;
   className?: string;
-  logoUrl?: string;
   menuButtonColor?: string;
   openMenuButtonColor?: string;
   changeMenuColorOnOpen?: boolean;
@@ -44,7 +43,6 @@ export const StaggeredMenu = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/studio_logo.png',
   menuButtonColor = '#fff',
   openMenuButtonColor = '#000',
   changeMenuColorOnOpen = true,
@@ -64,6 +62,7 @@ export const StaggeredMenu = ({
   const plusHRef = useRef<HTMLSpanElement>(null);
   const plusVRef = useRef<HTMLSpanElement>(null);
   const iconRef = useRef<HTMLSpanElement>(null);
+  const homeIconRef = useRef<SVGSVGElement>(null);
 
   const textInnerRef = useRef<HTMLSpanElement>(null);
   const textWrapRef = useRef<HTMLSpanElement>(null);
@@ -89,8 +88,9 @@ export const StaggeredMenu = ({
       const plusV = plusVRef.current;
       const icon = iconRef.current;
       const textInner = textInnerRef.current;
+      const homeIcon = homeIconRef.current;
 
-      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      if (!panel || !plusH || !plusV || !icon || !textInner || !homeIcon) return;
 
       let preLayers: HTMLDivElement[] = [];
       if (preContainer) {
@@ -108,6 +108,7 @@ export const StaggeredMenu = ({
       gsap.set(textInner, { yPercent: 0 });
 
       if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { color: menuButtonColor });
+      if (homeIconRef.current) gsap.set(homeIconRef.current, { color: menuButtonColor });
     });
     return () => ctx.revert();
   }, [menuButtonColor, position]);
@@ -273,13 +274,14 @@ export const StaggeredMenu = ({
   const animateColor = useCallback(
     (opening: boolean) => {
       const btn = toggleBtnRef.current;
-      if (!btn) return;
+      const homeIcon = homeIconRef.current;
+      if (!btn || !homeIcon) return;
       colorTweenRef.current?.kill();
       if (changeMenuColorOnOpen) {
         const targetColor = opening ? openMenuButtonColor : menuButtonColor;
-        colorTweenRef.current = gsap.to(btn, { color: targetColor, delay: 0.18, duration: 0.3, ease: 'power2.out' });
+        colorTweenRef.current = gsap.to([btn, homeIcon], { color: targetColor, delay: 0.18, duration: 0.3, ease: 'power2.out' });
       } else {
-        gsap.set(btn, { color: menuButtonColor });
+        gsap.set([btn, homeIcon], { color: menuButtonColor });
       }
     },
     [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]
@@ -290,8 +292,10 @@ export const StaggeredMenu = ({
       if (changeMenuColorOnOpen) {
         const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor;
         gsap.set(toggleBtnRef.current, { color: targetColor });
+        if (homeIconRef.current) gsap.set(homeIconRef.current, { color: targetColor });
       } else {
         gsap.set(toggleBtnRef.current, { color: menuButtonColor });
+        if (homeIconRef.current) gsap.set(homeIconRef.current, { color: menuButtonColor });
       }
     }
   }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
@@ -414,15 +418,8 @@ export const StaggeredMenu = ({
           className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
           aria-label="Main navigation header"
         >
-          <Link href="/" className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Logo">
-            <Image
-              src={logoUrl}
-              alt="Logo"
-              className="sm-logo-img block h-8 w-auto object-contain"
-              draggable={false}
-              width={110}
-              height={24}
-            />
+          <Link href="/" className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Go to home page">
+            <Home ref={homeIconRef} className="h-8 w-8" />
           </Link>
 
           <button
