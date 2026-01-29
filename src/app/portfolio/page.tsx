@@ -27,15 +27,17 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-start pt-40 p-8">
-      <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-16 text-center">
+    <div className="w-screen h-screen flex flex-col items-center justify-center p-8">
+      <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-12 text-center">
         Our Portfolio
       </h1>
-      <AnimatedList
-        items={portfolioItems}
-        onItemSelect={handleItemSelect}
-        itemClassName="transition-transform duration-300 hover:scale-105"
-      />
+      <div className="h-[60vh] w-full max-w-lg">
+        <AnimatedList
+          items={portfolioItems}
+          onItemSelect={handleItemSelect}
+          itemClassName="transition-transform duration-300 hover:scale-105"
+        />
+      </div>
     </div>
   );
 }
