@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 
 const portfolioItems = [
     { name: 'BLENDER', slug: 'blender', image: '/blender_logo.png' },
@@ -20,6 +21,27 @@ type PortfolioItem = {
 }
 
 export default function PortfolioPage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    const handleWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      scrollContainer.scrollTop += event.deltaY;
+    };
+    
+    // Add wheel listener to the window
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      // Clean up the event listener
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
+
   const handleItemClick = (item: PortfolioItem) => {
     if (item && item.slug) {
       window.open(`/portfolio/${item.slug}`, '_blank');
@@ -48,12 +70,15 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center p-8">
+    <div className="w-full h-screen flex flex-col items-center justify-center p-8 overflow-hidden">
       <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight text-center shrink-0 mb-12">
         Our Portfolio
       </h1>
       
-      <div className="w-full max-w-lg h-[60vh] overflow-y-auto scrollbar-hide p-4">
+      <div 
+        ref={scrollContainerRef}
+        className="w-full max-w-lg h-[60vh] overflow-y-auto scrollbar-hide p-4"
+      >
         <motion.ul
           className="list-none m-0 p-0"
           variants={listVariants}
