@@ -144,7 +144,7 @@ const AnimatedList = ({
     <div className={`relative w-full max-w-lg ${className}`}>
       <div
         ref={listRef}
-        className="max-h-[50vh] overflow-y-auto p-4 scrollbar-hide"
+        className="h-[50vh] overflow-y-auto p-4 scrollbar-hide"
         onScroll={handleScroll}
       >
         {items.map((item, index) => (
