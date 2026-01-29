@@ -1,6 +1,6 @@
 'use client';
 
-import TiltedCard from '@/components/tilted-card';
+import PixelCard from '@/components/pixel-card';
 
 const portfolioItems = [
     { name: 'BLENDER', slug: 'blender', image: '/blender_logo.png' },
@@ -21,24 +21,18 @@ export default function PortfolioPage() {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {portfolioItems.map((item) => (
-            <TiltedCard
-              key={item.slug}
-              imageSrc={item.image}
-              altText={item.name}
-              captionText={item.name}
-              containerHeight="250px"
-              containerWidth="250px"
-              imageHeight="250px"
-              imageWidth="250px"
-              scaleOnHover={1.05}
-              displayOverlayContent={true}
+            <PixelCard 
+              key={item.slug} 
+              variant="pink"
               onClick={() => window.open(`/portfolio/${item.slug}`, '_blank')}
-              overlayContent={
-                <h3 className="p-4 text-center text-2xl font-bold text-white">
-                  {item.name}
-                </h3>
-              }
-            />
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <img src={item.image} alt={item.name} className="h-20 w-20 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-white">{item.name}</h3>
+                </div>
+              </div>
+            </PixelCard>
         ))}
       </div>
     </div>
