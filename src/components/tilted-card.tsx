@@ -13,21 +13,20 @@ export default function TiltedCard({
   imageSrc,
   altText = 'Tilted card image',
   captionText = '',
-  title = '',
   containerHeight = '300px',
-  containerWidth = '300px',
+  containerWidth = '100%',
   imageHeight = '300px',
-  imageWidth = '250px',
-  scaleOnHover = 1.05,
-  rotateAmplitude = 12,
+  imageWidth = '300px',
+  scaleOnHover = 1.1,
+  rotateAmplitude = 14,
   showMobileWarning = true,
   showTooltip = true,
+  overlayContent = null,
   displayOverlayContent = false
 }: {
   imageSrc: string;
   altText?: string;
   captionText?: string;
-  title?: string;
   containerHeight?: string;
   containerWidth?: string;
   imageHeight?: string;
@@ -36,6 +35,7 @@ export default function TiltedCard({
   rotateAmplitude?: number;
   showMobileWarning?: boolean;
   showTooltip?: boolean;
+  overlayContent?: React.ReactNode;
   displayOverlayContent?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -125,13 +125,9 @@ export default function TiltedCard({
           }}
         />
 
-        {displayOverlayContent && title && (
-          <motion.div
-            className="absolute inset-0 z-[2] flex items-center justify-center rounded-[15px] bg-black/50 [transform:translateZ(30px)] will-change-transform pointer-events-none"
-          >
-            <h3 className="p-4 text-center text-2xl font-bold text-white">
-                {title}
-            </h3>
+        {displayOverlayContent && overlayContent && (
+          <motion.div className="absolute inset-0 z-[2] flex items-center justify-center rounded-[15px] bg-black/50 [transform:translateZ(30px)] will-change-transform pointer-events-none">
+            {overlayContent}
           </motion.div>
         )}
       </motion.div>
