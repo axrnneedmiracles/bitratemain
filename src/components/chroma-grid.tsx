@@ -147,7 +147,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
       ref={rootRef}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
-      className={`relative w-full h-full flex flex-wrap justify-center items-center gap-6 p-8 overflow-y-auto ${className}`}
+      className={`relative w-full h-full flex flex-wrap justify-center items-start gap-6 p-8 ${className}`}
       style={{
         '--r': `${radius}px`,
         '--x': '50%',

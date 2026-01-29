@@ -79,11 +79,11 @@ const portfolioItems = [
 
 export default function PortfolioPage() {
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center p-0 overflow-hidden">
+    <div className="w-full min-h-screen flex flex-col items-center justify-start p-0">
       <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight text-center shrink-0 mb-12 mt-24">
         Our Portfolio
       </h1>
-      <div className="w-full flex-grow relative">
+      <div className="w-full flex-grow relative px-4 pb-24">
         <ChromaGrid 
           items={portfolioItems}
           radius={400}
