@@ -27,7 +27,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center p-8">
+    <div className="w-screen h-screen flex flex-col items-center justify-start pt-40 p-8">
       <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-16 text-center">
         Our Portfolio
       </h1>

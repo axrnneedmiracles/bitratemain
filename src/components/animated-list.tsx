@@ -59,6 +59,9 @@ const AnimatedList = ({
 }: AnimatedListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
+  const [keyboardNav, setKeyboardNav] = useState(false);
+  const [topGradientOpacity, setTopGradientOpacity] = useState(0);
+  const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1);
 
   const handleItemMouseEnter = useCallback((index: number) => {
     setSelectedIndex(index);
@@ -73,15 +76,24 @@ const AnimatedList = ({
     },
     [onItemSelect]
   );
+  
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+    setTopGradientOpacity(Math.min(scrollTop / 50, 1));
+    const bottomDistance = scrollHeight - (scrollTop + clientHeight);
+    setBottomGradientOpacity(scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1));
+  }, []);
 
   useEffect(() => {
     if (!enableArrowNavigation) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey)) {
         e.preventDefault();
+        setKeyboardNav(true);
         setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1));
       } else if (e.key === 'ArrowUp' || (e.key === 'Tab' && e.shiftKey)) {
         e.preventDefault();
+        setKeyboardNav(true);
         setSelectedIndex((prev) => Math.max(prev - 1, 0));
       } else if (e.key === 'Enter') {
         if (selectedIndex >= 0 && selectedIndex < items.length) {
@@ -97,11 +109,43 @@ const AnimatedList = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
 
+  useEffect(() => {
+    if (!keyboardNav || selectedIndex < 0 || !listRef.current) return;
+    const container = listRef.current;
+    const selectedItem = container.querySelector(`[data-index="${selectedIndex}"]`) as HTMLElement;
+    if (selectedItem) {
+      const extraMargin = 50;
+      const containerScrollTop = container.scrollTop;
+      const containerHeight = container.clientHeight;
+      const itemTop = selectedItem.offsetTop;
+      const itemBottom = itemTop + selectedItem.offsetHeight;
+      if (itemTop < containerScrollTop + extraMargin) {
+        container.scrollTo({ top: itemTop - extraMargin, behavior: 'smooth' });
+      } else if (itemBottom > containerScrollTop + containerHeight - extraMargin) {
+        container.scrollTo({
+          top: itemBottom - containerHeight + extraMargin,
+          behavior: 'smooth'
+        });
+      }
+    }
+    setKeyboardNav(false);
+  }, [selectedIndex, keyboardNav]);
+  
+  useEffect(() => {
+    const listEl = listRef.current;
+    if (listEl) {
+      const { scrollHeight, clientHeight } = listEl;
+      setBottomGradientOpacity(scrollHeight <= clientHeight ? 0 : 1);
+    }
+  }, [items]);
+
+
   return (
     <div className={`relative w-full max-w-lg ${className}`}>
       <div
         ref={listRef}
-        className="p-4"
+        className="max-h-[50vh] overflow-y-auto p-4 scrollbar-hide"
+        onScroll={handleScroll}
       >
         {items.map((item, index) => (
           <AnimatedItem
@@ -135,6 +179,16 @@ const AnimatedList = ({
           </AnimatedItem>
         ))}
       </div>
+      <>
+          <div
+            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-black to-transparent pointer-events-none transition-opacity duration-300 ease"
+            style={{ opacity: topGradientOpacity }}
+          ></div>
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-black to-transparent pointer-events-none transition-opacity duration-300 ease"
+            style={{ opacity: bottomGradientOpacity }}
+          ></div>
+        </>
     </div>
   );
 };
