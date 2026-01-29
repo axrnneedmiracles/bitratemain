@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
 
 const portfolioItems = [
     { name: 'BLENDER', slug: 'blender', image: '/blender_logo.png' },
@@ -21,27 +20,6 @@ type PortfolioItem = {
 }
 
 export default function PortfolioPage() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-
-    const handleWheel = (event: WheelEvent) => {
-      event.preventDefault();
-      scrollContainer.scrollTop += event.deltaY;
-    };
-    
-    // Add wheel listener to the window
-    window.addEventListener('wheel', handleWheel, { passive: false });
-
-    return () => {
-      // Clean up the event listener
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
-
-
   const handleItemClick = (item: PortfolioItem) => {
     if (item && item.slug) {
       window.open(`/portfolio/${item.slug}`, '_blank');
@@ -67,7 +45,6 @@ export default function PortfolioPage() {
       </h1>
       
       <div 
-        ref={scrollContainerRef}
         className="w-full max-w-lg h-[60vh] overflow-y-auto scrollbar-hide p-4"
       >
         <ul
@@ -92,7 +69,7 @@ export default function PortfolioPage() {
                     alt=""
                     aria-hidden="true"
                     className="absolute top-1 left-1 h-full w-full object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(30%) sepia(94%) saturate(2811%) hue-rotate(228deg) brightness(101%) contrast(102%)' }}
+                    style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(5833%) hue-rotate(240deg) brightness(102%) contrast(105%)' }}
                   />
                   <img
                     src={item.image}
