@@ -60,18 +60,24 @@ const LightPillar = ({
   const mouseRef = useRef(new THREE.Vector2(0, 0));
   const timeRef = useRef(0);
   const [webGLSupported, setWebGLSupported] = useState(true);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Check WebGL support
   useEffect(() => {
+    if (!isClient) return;
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
     if (!gl) {
       setWebGLSupported(false);
     }
-  }, []);
+  }, [isClient]);
 
   useEffect(() => {
-    if (!containerRef.current || !webGLSupported) return;
+    if (!containerRef.current || !webGLSupported || !isClient) return;
 
     const container = containerRef.current;
     let width = container.clientWidth;
@@ -358,8 +364,13 @@ const LightPillar = ({
     noiseIntensity,
     pillarRotation,
     webGLSupported,
-    quality
+    quality,
+    isClient
   ]);
+
+  if (!isClient) {
+    return null;
+  }
 
   if (!webGLSupported) {
     return (
