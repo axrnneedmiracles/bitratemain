@@ -2,11 +2,12 @@
 
 import { useRef, useEffect, FC, PointerEvent, MouseEvent } from 'react';
 import { gsap } from 'gsap';
+import { useRouter } from 'next/navigation';
 
 interface ChromaGridItem {
   image: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   handle?: string;
   borderColor?: string;
   gradient?: string;
@@ -29,6 +30,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
   const setX = useRef<gsap.QuickSetter | null>(null);
   const setY = useRef<gsap.QuickSetter | null>(null);
   const pos = useRef({ x: 0, y: 0 });
+  const router = useRouter();
 
   const demo: ChromaGridItem[] = [
     {
@@ -130,7 +132,13 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
   };
 
   const handleCardClick = (url?: string) => {
-    if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    if (url) {
+      if (url.startsWith('http')) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } else {
+        router.push(url);
+      }
+    }
   };
 
   const handleCardMove = (e: MouseEvent<HTMLElement>) => {
@@ -177,7 +185,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
           <footer className="relative z-10 p-3 text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
             <h3 className="m-0 text-[1.05rem] font-semibold">{c.title}</h3>
             {c.handle && <span className="text-[0.95rem] opacity-80 text-right">{c.handle}</span>}
-            <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>
+            {c.subtitle && <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>}
             {c.location && <span className="text-[0.85rem] opacity-85 text-right">{c.location}</span>}
           </footer>
         </article>
