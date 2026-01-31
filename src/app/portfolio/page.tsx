@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import ChromaGrid from '@/components/chroma-grid';
 
 const portfolioItems = [
   {
@@ -44,6 +43,15 @@ const portfolioItems = [
   },
 ];
 
+const chromaGridItems = portfolioItems.map(item => ({
+    image: item.image,
+    title: item.title,
+    subtitle: 'View Project',
+    url: item.url,
+    borderColor: '#4F46E5', 
+    gradient: 'linear-gradient(145deg, #000, #111)',
+}));
+
 export default function PortfolioPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
@@ -52,31 +60,12 @@ export default function PortfolioPage() {
           Our Portfolio
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground">
-          A selection of our work. Click to see more.
+          A selection of our work. Interact with the grid below.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {portfolioItems.map((item) => (
-          <Link key={item.url} href={item.url} className="block group">
-            <div className="relative w-full aspect-square rounded-2xl bg-card/10 backdrop-blur-sm border border-white/10 p-6 flex flex-col items-center justify-center text-center transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:[transform:translateZ(20px)]">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(29,78,216,0.4)_0%,transparent_80%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative z-10">
-                <div className="relative w-24 h-24 mb-4">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-white">
-                  {item.title}
-                </h3>
-              </div>
-            </div>
-          </Link>
-        ))}
+      <div className="relative h-[900px]">
+        <ChromaGrid items={chromaGridItems} />
       </div>
     </div>
   );

@@ -46,10 +46,10 @@ export default function RootLayout({
             items={menuItems}
             socialItems={socialItems}
           />
-        <div className="fixed inset-0 -z-20">
+        <div className="fixed inset-0 -z-30">
           <LightPillar />
         </div>
-        <div className="fixed inset-0 bg-black/70 -z-10" />
+        <div className="fixed inset-0 bg-black/70 -z-20" />
 
         <div className="relative z-0 flex flex-col min-h-screen">
           <main className="flex-grow">{children}</main>
