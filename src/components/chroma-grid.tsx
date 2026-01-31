@@ -4,6 +4,7 @@ import { useRef, useEffect, FC, PointerEvent, MouseEvent } from 'react';
 import { gsap } from 'gsap';
 import { useRouter } from 'next/navigation';
 import ClickSpark from './click-spark';
+import ElectricBorder from './electric-border';
 
 interface ChromaGridItem {
   image: string;
@@ -164,30 +165,17 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
       {data.map((c, i) => (
         <ClickSpark key={i} sparkColor={c.borderColor || '#fff'}>
           <div
-              onMouseMove={handleCardMove}
-              onClick={() => handleCardClick(c.url)}
-              className="group relative w-[300px] rounded-[20px] cursor-pointer overflow-hidden"
-              style={{
-                  '--mouse-x': '0px',
-                  '--mouse-y': '0px',
-              } as React.CSSProperties}
+            onMouseMove={handleCardMove}
+            onClick={() => handleCardClick(c.url)}
+            className="cursor-pointer"
           >
-              <div
-                  className="absolute w-[300%] h-[50%] opacity-70 bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0"
-                  style={{
-                      background: `radial-gradient(circle, ${c.borderColor}, transparent 10%)`,
-                      animationDuration: '5s'
-                  }}
-              ></div>
-              <div
-                  className="absolute w-[300%] h-[50%] opacity-70 top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0"
-                  style={{
-                      background: `radial-gradient(circle, ${c.borderColor}, transparent 10%)`,
-                      animationDuration: '5s'
-                  }}
-              ></div>
+            <ElectricBorder
+              color={c.borderColor || '#fff'}
+              borderRadius={20}
+              className="w-[300px]"
+            >
               <article
-                  className="relative z-10 flex flex-col h-full rounded-[20px]"
+                  className="group relative z-10 flex flex-col h-full rounded-[20px]"
                   style={{
                       background: c.gradient,
                       '--spotlight-color': 'rgba(255,255,255,0.3)',
@@ -210,6 +198,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
                   {c.location && <span className="text-[0.85rem] opacity-85 text-right">{c.location}</span>}
                 </footer>
               </article>
+            </ElectricBorder>
           </div>
         </ClickSpark>
       ))}
