@@ -168,8 +168,8 @@ const ElectricBorder = ({
     const amplitude = chaos;
     const frequency = 10;
     const baseFlatness = 0;
-    const displacement = 60;
-    const borderOffset = 60;
+    const displacement = 30;
+    const borderOffset = 30;
 
     const updateSize = () => {
       const rect = container.getBoundingClientRect();

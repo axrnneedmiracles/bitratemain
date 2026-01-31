@@ -102,7 +102,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '' }) => {
 
   return (
     <div
-      className={`relative w-full h-full flex flex-wrap justify-center items-center gap-3 ${className}`}
+      className={`relative w-full h-full flex flex-wrap justify-center items-center gap-16 ${className}`}
     >
       {data.map((c, i) => (
         <ClickSpark key={i} sparkColor={c.borderColor || '#fff'}>
