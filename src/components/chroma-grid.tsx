@@ -23,31 +23,6 @@ interface ChromaGridProps {
   ease?: string;
 }
 
-const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, damping = 0.45![CDATA['use client';
-
-import { useRef, useEffect, FC } from 'react';
-import { gsap } from 'gsap';
-
-interface ChromaGridItem {
-  image: string;
-  title: string;
-  subtitle: string;
-  handle?: string;
-  borderColor?: string;
-  gradient?: string;
-  url?: string;
-  location?: string;
-}
-
-interface ChromaGridProps {
-  items?: ChromaGridItem[];
-  className?: string;
-  radius?: number;
-  damping?: number;
-  fadeOut?: number;
-  ease?: string;
-}
-
 const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, damping = 0.45, fadeOut = 0.6, ease = 'power3.out' }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const fadeRef = useRef<HTMLDivElement>(null);
