@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { AnimatedProjectList } from '@/components/animated-project-list';
+import { ArrowLeft } from 'lucide-react';
 
 const portfolioItems = [
   'blender',
@@ -34,8 +36,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     .join(' ');
 
   return {
-    title: `${title} Sample | Studio Noir`,
-    description: `Sample work for ${title}.`,
+    title: `${title} Projects | Studio Noir`,
+    description: `A list of sample projects for ${title}.`,
   };
 }
 
@@ -44,17 +46,32 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
     notFound();
   }
 
+  const title = params.slug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24 h-screen flex flex-col items-center justify-center text-center">
-      <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-8">
-        Click on Sample to View
-      </h1>
-      <p className="text-lg md:text-xl text-muted-foreground mb-8">
-        This is a placeholder page for the portfolio item.
-      </p>
-      <Button asChild>
-        <Link href="/portfolio">Back to Portfolio</Link>
-      </Button>
+    <div className="container mx-auto px-4 py-16 md:py-24 min-h-screen flex flex-col items-center">
+      <header className="w-full max-w-4xl text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">
+          {title} Projects
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground">
+          A list of sample projects.
+        </p>
+      </header>
+
+      <AnimatedProjectList />
+
+      <div className="mt-12">
+        <Button asChild variant="outline">
+          <Link href="/portfolio">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Portfolio
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }
