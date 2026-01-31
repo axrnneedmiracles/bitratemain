@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function SplashCursor({
   SIM_RESOLUTION = 128,
@@ -18,8 +18,16 @@ function SplashCursor({
   TRANSPARENT = true
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -1092,6 +1100,7 @@ function SplashCursor({
         window.removeEventListener('touchend', handleTouchEnd);
     }
   }, [
+    isClient,
     SIM_RESOLUTION,
     DYE_RESOLUTION,
     CAPTURE_RESOLUTION,
@@ -1107,6 +1116,8 @@ function SplashCursor({
     BACK_COLOR,
     TRANSPARENT
   ]);
+
+  if (!isClient) return null;
 
   return (
     <div className="fixed top-0 left-0 z-50 pointer-events-none w-full h-full">
