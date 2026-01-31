@@ -165,21 +165,28 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '', radius = 300, 
             key={i}
             onMouseMove={handleCardMove}
             onClick={() => handleCardClick(c.url)}
-            className="group relative w-[300px] rounded-[20px] p-px cursor-pointer"
+            className="group relative w-[300px] rounded-[20px] cursor-pointer overflow-hidden"
             style={{
                 '--mouse-x': '0px',
                 '--mouse-y': '0px',
             } as React.CSSProperties}
         >
             <div
-                className="absolute -inset-px rounded-[20px] animate-border-spin z-0"
+                className="absolute w-[300%] h-[50%] opacity-70 bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0"
                 style={{
-                    animationDuration: '4s',
-                    background: `conic-gradient(from 180deg at 50% 50%, transparent, ${c.borderColor}, transparent)`
+                    background: `radial-gradient(circle, ${c.borderColor}, transparent 10%)`,
+                    animationDuration: '5s'
                 }}
-            />
+            ></div>
+            <div
+                className="absolute w-[300%] h-[50%] opacity-70 top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0"
+                style={{
+                    background: `radial-gradient(circle, ${c.borderColor}, transparent 10%)`,
+                    animationDuration: '5s'
+                }}
+            ></div>
             <article
-                className="relative flex flex-col h-full rounded-[19px] overflow-hidden"
+                className="relative z-10 flex flex-col h-full rounded-[20px]"
                 style={{
                     background: c.gradient,
                     '--spotlight-color': 'rgba(255,255,255,0.3)',
