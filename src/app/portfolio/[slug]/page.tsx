@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { AnimatedProjectList } from '@/components/animated-project-list';
 import { ArrowLeft } from 'lucide-react';
 
 const portfolioItems = [
@@ -61,8 +60,10 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
           A list of sample projects.
         </p>
       </header>
-
-      <AnimatedProjectList />
+      
+      <div className="w-full max-w-2xl text-center p-8 bg-card/50 border rounded-lg">
+         <p className="text-muted-foreground">Sample project content for {title}.</p>
+      </div>
 
       <div className="mt-12">
         <Button asChild variant="outline">
