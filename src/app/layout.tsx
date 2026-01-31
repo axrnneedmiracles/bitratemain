@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import LightPillar from '@/components/light-pillar';
 import StaggeredMenu from '@/components/staggered-menu';
-import SplashCursor from '@/components/splash-cursor';
+import ConditionalSplashCursor from '@/components/conditional-splash-cursor';
 
 export const metadata: Metadata = {
   title: 'Studio Noir',
@@ -40,31 +40,14 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
-        <SplashCursor
-          SPLAT_FORCE={3000}
-          DENSITY_DISSIPATION={4}
-          SPLAT_RADIUS={0.2}
-        />
+        <ConditionalSplashCursor />
         <StaggeredMenu
             isFixed={true}
             items={menuItems}
             socialItems={socialItems}
           />
         <div className="fixed inset-0 -z-20">
-          <LightPillar
-            topColor="#5227FF"
-            bottomColor="#FF9FFC"
-            intensity={2}
-            rotationSpeed={0.3}
-            glowAmount={0.002}
-            pillarWidth={3}
-            pillarHeight={0.4}
-            noiseIntensity={0.5}
-            pillarRotation={25}
-            interactive={false}
-            mixBlendMode="screen"
-            quality="high"
-          />
+          <LightPillar />
         </div>
         <div className="fixed inset-0 bg-black/70 -z-10" />
 
