@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { AnimatedProjectList } from '@/components/animated-project-list';
+import Model3D from '@/components/Model3D';
 
 const portfolioItems = [
   'blender',
@@ -64,8 +65,9 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
       
       <div className="w-full max-w-6xl mx-auto">
         {params.slug === 'blender' ? (
-          <div className="flex justify-center md:justify-start">
-              <AnimatedProjectList />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <AnimatedProjectList />
+            <Model3D />
           </div>
         ) : (
           <div className="w-full max-w-2xl mx-auto text-center p-8 bg-card/50 border rounded-lg">
