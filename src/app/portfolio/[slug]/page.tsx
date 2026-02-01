@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
+import { AnimatedProjectList } from '@/components/animated-project-list';
 
 const portfolioItems = [
   'blender',
@@ -51,21 +52,27 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
     .join(' ');
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24 min-h-screen flex flex-col items-center">
-      <header className="w-full max-w-4xl text-center mb-12">
+    <div className="container mx-auto px-4 py-16 md:py-24 min-h-screen">
+      <header className="w-full max-w-4xl text-center mb-12 mx-auto">
         <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">
           {title} Projects
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground">
-          A list of sample projects.
+          {params.slug === 'blender' ? 'Here are some of our Blender projects.' : 'A list of sample projects.'}
         </p>
       </header>
       
-      <div className="w-full max-w-2xl text-center p-8 bg-card/50 border rounded-lg">
-         <p className="text-muted-foreground">Sample project content for {title}.</p>
+      <div className="w-full max-w-4xl mx-auto flex justify-center md:justify-start">
+        {params.slug === 'blender' ? (
+          <AnimatedProjectList />
+        ) : (
+          <div className="w-full max-w-2xl text-center p-8 bg-card/50 border rounded-lg">
+            <p className="text-muted-foreground">Sample project content for {title}.</p>
+          </div>
+        )}
       </div>
 
-      <div className="mt-12">
+      <div className="mt-12 flex justify-center">
         <Button asChild variant="outline">
           <Link href="/portfolio">
             <ArrowLeft className="mr-2 h-4 w-4" />

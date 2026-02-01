@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-const projects = Array.from({ length: 10 }, (_, i) => `PROJECT ${i + 1}`);
+const projects = Array.from({ length: 5 }, (_, i) => `Project ${i + 1}`);
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -16,9 +16,9 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { x: -20, opacity: 0 },
   visible: {
-    y: 0,
+    x: 0,
     opacity: 1,
     transition: {
       ease: 'easeOut',
@@ -30,7 +30,7 @@ const itemVariants = {
 export function AnimatedProjectList() {
   return (
     <motion.ul
-      className="w-full max-w-2xl space-y-4"
+      className="w-full max-w-md space-y-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -39,7 +39,7 @@ export function AnimatedProjectList() {
         <motion.li
           key={project}
           variants={itemVariants}
-          className="bg-card/50 border border-border p-6 rounded-lg text-center text-xl font-semibold text-foreground shadow-md"
+          className="bg-card/50 border border-border p-6 rounded-lg text-left text-xl font-semibold text-foreground shadow-md"
         >
           {project}
         </motion.li>
