@@ -108,7 +108,7 @@ export function MusicVisualizer() {
         x += barWidth + 1;
       }
     } else {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
   }, [isPlaying]);
