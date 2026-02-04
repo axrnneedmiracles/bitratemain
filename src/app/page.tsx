@@ -11,7 +11,7 @@ export default function Home() {
     { image: '/figma_logo.png', text: 'Figma' },
     { image: '/unity_logo.png', text: 'Unity' },
     { image: '/flnew_logo.png', text: 'FL Studio' },
-    { image: '/webdev_logo.png', text: 'Web Dev' },
+    { image: '/web_logo.png', text: 'Web Dev' },
     { image: '/canva_logo.png', text: 'Canva' },
     { image: '/h_logo.png', text: 'Houdini' },
   ];

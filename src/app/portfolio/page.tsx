@@ -50,7 +50,7 @@ const portfolioItems = [
     gradient: 'linear-gradient(145deg, #FF7000, #F7B500, #000)',
   },
   {
-    image: '/webdev_logo.png',
+    image: '/web_logo.png',
     title: 'Web Dev',
     url: '/portfolio/web-dev',
     borderColor: '#4E5A8F',
