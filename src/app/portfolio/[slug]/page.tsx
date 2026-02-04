@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -9,6 +10,8 @@ import { MusicVisualizer } from '@/components/music-visualizer';
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
@@ -79,6 +82,9 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
                         </div>
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl h-auto p-0 border-0 overflow-hidden">
+                        <DialogHeader className="sr-only">
+                          <DialogTitle>Lie of Survival Video</DialogTitle>
+                        </DialogHeader>
                         <div className="aspect-video">
                             <iframe
                                 width="100%"
