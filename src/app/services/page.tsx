@@ -47,6 +47,9 @@ export default function ServicesPage() {
                   <Button asChild variant="outline">
                     <Link href="/portfolio/after-effects">After Effects</Link>
                   </Button>
+                  <Button asChild variant="outline">
+                    <Link href="/portfolio/canva">Canva</Link>
+                  </Button>
                 </div>
               </Card>
             );
