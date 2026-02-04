@@ -76,12 +76,12 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
         return <MusicVisualizer />;
       case 'unity':
         const unityImages = [
-          { src: 'https://picsum.photos/seed/unity-scroll-1/400/300', alt: 'Unity project screenshot 1', hint: 'game environment' },
-          { src: 'https://picsum.photos/seed/unity-scroll-2/400/300', alt: 'Unity project screenshot 2', hint: 'character model' },
-          { src: 'https://picsum.photos/seed/unity-scroll-3/400/300', alt: 'Unity project screenshot 3', hint: 'gameplay action' },
-          { src: 'https://picsum.photos/seed/unity-scroll-4/400/300', alt: 'Unity project screenshot 4', hint: '3d assets' },
-          { src: 'https://picsum.photos/seed/unity-scroll-5/400/300', alt: 'Unity project screenshot 5', hint: 'level design' },
-          { src: 'https://picsum.photos/seed/unity-scroll-6/400/300', alt: 'Unity project screenshot 6', hint: 'vfx graph' },
+          { src: '/unityimg/unity1.jpg', alt: 'Unity project screenshot 1', hint: 'game environment' },
+          { src: '/unityimg/unity2.jpg', alt: 'Unity project screenshot 2', hint: 'character model' },
+          { src: '/unityimg/unity3.jpg', alt: 'Unity project screenshot 3', hint: 'gameplay action' },
+          { src: '/unityimg/unity4.jpg', alt: 'Unity project screenshot 4', hint: '3d assets' },
+          { src: '/unityimg/unity5.jpg', alt: 'Unity project screenshot 5', hint: 'level design' },
+          { src: '/unityimg/unity6.jpg', alt: 'Unity project screenshot 6', hint: 'vfx graph' },
         ];
         return (
           <div className="flex flex-col items-center space-y-16">
