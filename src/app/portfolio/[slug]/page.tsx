@@ -7,7 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 import { AnimatedProjectList } from '@/components/animated-project-list';
 import Model3D from '@/components/Model3D';
 import { MusicVisualizer } from '@/components/music-visualizer';
-import { CodeTypingEffect } from '@/components/code-typing-effect';
+import CodeTypingEffect from '@/components/code-typing-effect';
 import {
   Dialog,
   DialogContent,
