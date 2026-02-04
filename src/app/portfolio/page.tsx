@@ -29,7 +29,7 @@ const portfolioItems = [
     gradient: 'linear-gradient(145deg, #D492FF, #392D64, #000)',
   },
   {
-    image: '/flstudio_logo.png',
+    image: '/flnew_logo.png',
     title: 'FL Studio',
     url: '/portfolio/fl-studio',
     borderColor: '#FF4D00',
