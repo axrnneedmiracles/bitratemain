@@ -73,9 +73,9 @@ export function MusicVisualizer() {
   }, [currentSongIndex]);
 
 
-  const drawVisualizer = useCallback(() => {
+  const draw = useCallback(() => {
+    animationFrameId.current = requestAnimationFrame(draw);
     if (!analyserRef.current || !canvasRef.current) {
-      animationFrameId.current = requestAnimationFrame(drawVisualizer);
       return;
     }
 
@@ -84,44 +84,38 @@ export function MusicVisualizer() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-    analyser.getByteFrequencyData(dataArray);
+    if (isPlaying) {
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      analyser.getByteFrequencyData(dataArray);
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const barWidth = (canvas.width / bufferLength) * 1.5;
-    let barHeight;
-    let x = 0;
+      const barWidth = (canvas.width / bufferLength) * 1.5;
+      let barHeight;
+      let x = 0;
 
-    for (let i = 0; i < bufferLength; i++) {
-      barHeight = dataArray[i] * (canvas.height / 255);
+      for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i] * (canvas.height / 255);
 
-      const r = 255 * (i / bufferLength);
-      const g = 100;
-      const b = 150 + (barHeight/canvas.height) * 105;
+        const r = 255 * (i / bufferLength);
+        const g = 100;
+        const b = 150 + (barHeight / canvas.height) * 105;
 
-      ctx.fillStyle = `rgb(${r},${g},${b})`;
-      ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
-      x += barWidth + 1;
+        x += barWidth + 1;
+      }
+    } else {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
-
-    animationFrameId.current = requestAnimationFrame(drawVisualizer);
-  }, []);
+  }, [isPlaying]);
 
   useEffect(() => {
-    if (isPlaying && !animationFrameId.current) {
-      drawVisualizer();
-    } else if (!isPlaying && animationFrameId.current) {
-      cancelAnimationFrame(animationFrameId.current);
-      animationFrameId.current = null;
-      // Clear canvas when paused
-      const canvas = canvasRef.current;
-      const ctx = canvas?.getContext('2d');
-      if (ctx && canvas) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
+    if (isInitialized) {
+      animationFrameId.current = requestAnimationFrame(draw);
     }
 
     return () => {
@@ -130,7 +124,7 @@ export function MusicVisualizer() {
         animationFrameId.current = null;
       }
     };
-  }, [isPlaying, drawVisualizer]);
+  }, [isInitialized, draw]);
   
   useEffect(() => {
     const handleResize = () => {
