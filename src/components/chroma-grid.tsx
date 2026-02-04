@@ -111,7 +111,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '' }) => {
             className="cursor-pointer w-[300px] h-[300px]"
           >
             <article
-                className="group relative z-10 h-full rounded-[20px] flex flex-col"
+                className="group relative z-10 h-full rounded-[20px] flex flex-col overflow-hidden"
                 style={{
                     background: c.gradient,
                     '--spotlight-color': 'rgba(255,255,255,0.3)',
@@ -127,7 +127,7 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '' }) => {
               <div className="relative z-0 flex-grow p-[10px]">
                 <img src={c.image} alt={c.title} loading="lazy" className="w-full h-full object-contain rounded-[10px]" />
               </div>
-              <footer className="relative z-10 px-[10px] py-2 text-white font-sans flex justify-center items-center bg-black/70 rounded-b-[20px]">
+              <footer className="relative z-10 px-[10px] py-2 text-white font-sans flex justify-center items-center bg-black/70">
                 <h3 className="m-0 text-base font-semibold">{c.title}</h3>
               </footer>
             </article>
