@@ -124,10 +124,10 @@ const ChromaGrid: FC<ChromaGridProps> = ({ items, className = '' }) => {
                     'radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)'
                 }}
               />
-              <div className="relative z-0 flex-grow p-[10px]">
-                <img src={c.image} alt={c.title} loading="lazy" className="w-full h-full object-contain rounded-[10px]" />
+              <div className="relative z-0 flex-1 p-[10px] min-h-0 flex items-center justify-center">
+                <img src={c.image} alt={c.title} loading="lazy" className="max-w-full max-h-full object-contain" />
               </div>
-              <footer className="relative z-10 px-[10px] py-2 text-white font-sans flex justify-center items-center bg-black/70">
+              <footer className="relative z-10 px-[10px] py-2 text-white font-sans flex justify-center items-center bg-black/70 flex-shrink-0">
                 <h3 className="m-0 text-base font-semibold">{c.title}</h3>
               </footer>
             </article>
