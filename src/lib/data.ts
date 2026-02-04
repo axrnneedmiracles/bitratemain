@@ -36,9 +36,9 @@ export const services: Service[] = [
   {
     id: '1',
     title: 'Video Editing',
-    description: 'We use various professional softwares for editing, currently you can click to see our previews',
+    description: 'Professional editing using a suite of powerful tools.',
     icon: Film,
-    slug: 'video-editing-special',
+    slug: 'video-editing',
   },
   {
     id: '2',

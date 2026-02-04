@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { ImageScroller } from '@/components/image-scroller';
 import GlitchText from '@/components/glitch-text';
+import BlurText from '@/components/blur-text';
 
 const portfolioItems = [
   'blender',
@@ -27,6 +28,7 @@ const portfolioItems = [
   'unity',
   'fl-studio',
   'houdini',
+  'video-editing',
 ];
 
 export async function generateStaticParams() {
@@ -133,6 +135,27 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
             <CodeTypingEffect />
           </div>
         );
+      case 'video-editing':
+        return (
+          <div className="flex flex-col items-center space-y-8">
+            <BlurText
+              text="We use various professional softwares for editing, currently you can click to see our previews"
+              animateBy="words"
+              className="text-lg md:text-xl text-muted-foreground text-center max-w-2xl"
+            />
+            <div className="flex flex-wrap justify-center gap-4 mt-4">
+              <Button asChild variant="outline">
+                <Link href="/portfolio/davinci">DaVinci Resolve</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/portfolio/after-effects">After Effects</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/portfolio/canva">Canva</Link>
+              </Button>
+            </div>
+          </div>
+        );
       default:
         return (
           <div className="w-full max-w-2xl mx-auto text-center p-8 bg-card/50 border rounded-lg">
@@ -152,6 +175,8 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
             return 'A sample of our game development work.';
         case 'web-dev':
             return 'A glimpse into our world of code.';
+        case 'video-editing':
+            return 'Explore our video editing capabilities.';
         default:
             return 'A list of sample projects.';
     }
