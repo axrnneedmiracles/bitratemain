@@ -88,7 +88,6 @@ export function ContactForm() {
     try {
         const res = await fetch("https://script.google.com/macros/s/AKfycbxR_6TU-bFVnengiOFYY-GQVOyxgRxuAEcW2PCivPmT-zqo1r-7DAHEpsPTXHKFX3jG0g/exec", {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
         });
 
