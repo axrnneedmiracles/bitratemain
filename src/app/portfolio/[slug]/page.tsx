@@ -141,7 +141,7 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
             <BlurText
               text="We use various professional softwares for editing, currently you can click to see our previews"
               animateBy="words"
-              className="text-lg md:text-xl text-muted-foreground text-center max-w-2xl"
+              className="text-xl md:text-2xl text-muted-foreground text-center max-w-2xl"
             />
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               <Button asChild variant="outline">
