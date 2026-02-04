@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ImageScroller } from '@/components/image-scroller';
+import GlitchText from '@/components/glitch-text';
 
 const portfolioItems = [
   'blender',
@@ -84,7 +85,7 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
           { src: '/unityimg/unity6.jpg', alt: 'Unity project screenshot 6', hint: 'level design' },
         ];
         return (
-          <div className="flex flex-col items-center space-y-16">
+          <div className="flex flex-col items-center space-y-8">
             <div className="w-full max-w-md mx-auto">
                 <Dialog>
                     <DialogTrigger asChild>
@@ -110,6 +111,7 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
                     </DialogContent>
                 </Dialog>
             </div>
+            <GlitchText className="text-3xl font-bold">OUR GAME ASSETS</GlitchText>
             <ImageScroller images={unityImages} speed="fast" />
           </div>
         );
