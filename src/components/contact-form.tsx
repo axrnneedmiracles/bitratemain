@@ -34,9 +34,18 @@ const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
   email: z.string().email('Please enter a valid email address.'),
   idType: z.string({ required_error: 'Please select a platform.' }),
-  userId: z.string().optional(),
+  userId: z.string().min(1, 'User ID is required.'),
+  otherId: z.string().optional(),
   services: z.array(z.string()).optional(),
   company: z.string().optional(),
+}).refine(data => {
+    if (data.idType === 'Other') {
+        return !!data.otherId && data.otherId.trim().length > 0;
+    }
+    return true;
+}, {
+    message: 'Please specify the other platform.',
+    path: ['otherId'],
 });
 
 export function ContactForm() {
@@ -57,6 +66,8 @@ export function ContactForm() {
       company: '',
     },
   });
+  
+  const idType = form.watch('idType');
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.company) {
@@ -65,21 +76,23 @@ export function ContactForm() {
     }
     
     const formData = new FormData();
-    const { company, ...submissionValues } = values;
+    
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    formData.append('userId', values.userId);
 
-    // Append form values to formData. This is needed to bypass CORS issues with Google Apps Script.
-    Object.entries(submissionValues).forEach(([key, value]) => {
-      if (value) {
-        if (Array.isArray(value)) {
-          formData.append(key, value.join(', '));
-        } else {
-          formData.append(key, value as string);
-        }
-      }
-    });
+    if (values.idType === 'Other' && values.otherId) {
+        formData.append('idType', `Other (${values.otherId})`);
+    } else {
+        formData.append('idType', values.idType);
+    }
+    
+    if (values.services && values.services.length > 0) {
+        formData.append('services', values.services.join(', '));
+    }
 
     try {
-        await fetch("https://script.google.com/macros/s/AKfycbwyC-W9eTjoZphTqeXLe7LQpSWZBFRnbD692vK3No4Rx8MJs94wsFzVrduuQeUz01t0dw/exec", {
+        await fetch("https://script.google.com/macros/s/AKfycbww6h0IGQAV0y_7GMjGqEN7o2AbcQtxIgx-fa7UlYx1kGrbioY3EwfzMj_oW-lA9gQIqQ/exec", {
             method: 'POST',
             body: formData,
         });
@@ -187,10 +200,10 @@ export function ContactForm() {
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent>
+                            <SelectItem value="Twitter (X)">Twitter (X)</SelectItem>
                             <SelectItem value="Instagram">Instagram</SelectItem>
                             <SelectItem value="Discord">Discord</SelectItem>
-                            <SelectItem value="Twitter">Twitter</SelectItem>
-                            <SelectItem value="Other">Other</SelectItem>
+                            <SelectItem value="Other">Other (mention)</SelectItem>
                         </SelectContent>
                     </Select>
                     <FormMessage />
@@ -211,6 +224,22 @@ export function ContactForm() {
                 )}
             />
         </div>
+
+        {idType === 'Other' && (
+            <FormField
+                control={form.control}
+                name="otherId"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Specify Platform</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Please specify the platform" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )}
+            />
+        )}
 
         <FormField
             control={form.control}
