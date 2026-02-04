@@ -110,7 +110,7 @@ export default function PortfolioSamplePage({ params }: { params: { slug:string 
                     </DialogContent>
                 </Dialog>
             </div>
-            <ImageScroller images={unityImages} speed="slow" />
+            <ImageScroller images={unityImages} speed="fast" />
           </div>
         );
       case 'web-dev':
