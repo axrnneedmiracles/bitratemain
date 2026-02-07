@@ -12,7 +12,7 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <header className="text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">
-          <SplitText splitType="words">About BITRATE STUDIO</SplitText>
+          <span className="shine-effect">About BITRATE STUDIO</span>
         </h1>
         <SplitText
           tag="p"
