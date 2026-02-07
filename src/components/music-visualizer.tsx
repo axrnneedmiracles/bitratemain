@@ -10,7 +10,7 @@ const projects = [
   { id: 1, title: 'DISTORTED HOPE', src: '/music/track1.mp3' },
   { id: 2, title: 'INDUSTRIAL CLOUD', src: '/music/track2.mp3' },
   { id: 3, title: 'SOFT GRISIS', src: '/music/track3.mp3' },
-  { id: 4, title: 'SOUL SAMPLE SWITCH', src: '/music/track4.mp3' },
+  { id: 4, title: 'SOUL SWITCH', src: '/music/track4.mp3' },
   { id: 5, title: 'EPIC CRIES', src: '/music/track5.mp3' },
 ];
 
