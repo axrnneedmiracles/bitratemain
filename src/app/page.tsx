@@ -17,7 +17,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex-grow flex flex-col items-center pt-16">
+    <div className="flex-grow flex flex-col items-center pt-24">
       <TextType
         as="h1"
         text={['WELCOME TO BITRATE STUDIO']}
@@ -36,7 +36,7 @@ export default function Home() {
           <Link href="/contact">CONTACT US</Link>
         </Button>
       </div>
-      <div className="w-full h-[450px] relative">
+      <div className="w-full h-[450px] relative mt-2">
         <CircularGallery items={galleryItems} bend={1} textColor="#ffffff" borderRadius={0.05} scrollEase={0.05} scrollSpeed={2} autoScrollSpeed={0.05} />
       </div>
     </div>
