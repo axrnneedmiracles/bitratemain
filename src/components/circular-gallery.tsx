@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform, Vec3, Raycast, Vec2 } from 'ogl';
@@ -498,10 +499,10 @@ class App {
         this.mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
         this.mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
 
-        this.raycaster.cast(this.mouse, this.camera);
+        this.raycaster.castMouse(this.camera, this.mouse);
         
         const planes = this.medias.map(media => media.plane);
-        const intersects = this.raycaster.intersect(planes);
+        const intersects = this.raycaster.intersectObjects(planes);
         
         if (intersects.length > 0) {
             const clickedPlane = intersects[0];
