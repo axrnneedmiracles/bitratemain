@@ -3,17 +3,14 @@ import TextType from '@/components/text-type';
 
 export default function Home() {
   const galleryItems = [
-    { image: '/blender_logo.png', text: 'Blender' },
-    { image: '/davinci_logo.png', text: 'DaVinci Resolve' },
-    { image: '/studio_logo.png', text: 'BITRATE STUDIO' },
     { image: '/aftereffects_logo.png', text: 'After Effects' },
-    { image: '/cinema4d_logo.png', text: 'Cinema 4D' },
-    { image: '/figma_logo.png', text: 'Figma' },
-    { image: '/unity_logo.png', text: 'Unity' },
-    { image: '/flnew_logo.png', text: 'FL Studio' },
-    { image: '/web_logo.png', text: 'Web Dev' },
+    { image: '/blender_logo.png', text: 'Blender' },
     { image: '/canva_logo.png', text: 'Canva' },
+    { image: '/davinci_logo.png', text: 'DaVinci Resolve' },
+    { image: '/flnew_logo.png', text: 'FL Studio' },
     { image: '/h_logo.png', text: 'Houdini' },
+    { image: '/unity_logo.png', text: 'Unity' },
+    { image: '/web_logo.png', text: 'Web Dev' },
   ];
 
   return (
