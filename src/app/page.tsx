@@ -29,12 +29,16 @@ export default function Home() {
         className="text-4xl md:text-6xl font-headline text-center font-bold"
       />
       <div className="flex gap-4 mt-20">
-        <Button asChild variant="outline" size="lg">
-          <Link href="/portfolio">PORTFOLIO</Link>
-        </Button>
-        <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-          <Link href="/contact">CONTACT US</Link>
-        </Button>
+        <div className="shining-border-wrapper">
+          <Button asChild size="lg" className="relative bg-background text-foreground hover:bg-accent hover:text-accent-foreground w-full h-full">
+            <Link href="/portfolio">PORTFOLIO</Link>
+          </Button>
+        </div>
+        <div className="shining-border-wrapper">
+          <Button asChild size="lg" className="relative bg-accent text-accent-foreground hover:bg-accent/90 w-full h-full">
+            <Link href="/contact">CONTACT US</Link>
+          </Button>
+        </div>
       </div>
       <div className="w-full h-[600px] relative mt-12">
         <CircularGallery items={galleryItems} bend={1} textColor="#ffffff" borderRadius={0.05} scrollEase={0.05} scrollSpeed={2} autoScrollSpeed={0.05} />
