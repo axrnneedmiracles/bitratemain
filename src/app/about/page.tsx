@@ -14,9 +14,15 @@ export default function AboutPage() {
         <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">
           <SplitText splitType="words">About BITRATE STUDIO</SplitText>
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground">
-          <SplitText splitType="words" delay={20}>Turning ideas into impactful visual and digital experiences.</SplitText>
-        </p>
+        <SplitText
+          tag="p"
+          splitType="words"
+          delay={20}
+          className="text-lg md:text-xl text-muted-foreground"
+          textAlign="center"
+        >
+          Turning ideas into impactful visual and digital experiences.
+        </SplitText>
       </header>
 
       <section className="max-w-3xl mx-auto space-y-6 text-muted-foreground leading-relaxed text-left">
