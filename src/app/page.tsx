@@ -17,7 +17,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-screen">
       <div className="text-center pt-20">
         <TextType
           as="h1"
