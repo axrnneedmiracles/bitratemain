@@ -28,7 +28,7 @@ export default function Home() {
         loop={false}
         className="text-4xl md:text-6xl font-headline text-center font-bold"
       />
-      <div className="flex gap-4 mt-8">
+      <div className="flex gap-4 mt-24">
         <Button asChild size="lg">
           <Link href="/portfolio">PORTFOLIO</Link>
         </Button>
@@ -36,7 +36,7 @@ export default function Home() {
           <Link href="/contact">CONTACT US</Link>
         </Button>
       </div>
-      <div className="w-full h-[450px] relative mt-2">
+      <div className="w-full h-[400px] relative mt-16">
         <CircularGallery items={galleryItems} bend={1} textColor="#ffffff" borderRadius={0.05} scrollEase={0.05} scrollSpeed={2} autoScrollSpeed={0.05} />
       </div>
     </div>
