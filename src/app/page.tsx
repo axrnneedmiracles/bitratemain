@@ -16,7 +16,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex-grow flex flex-col items-center justify-center h-screen py-10 space-y-12">
+    <div className="flex-grow flex flex-col items-center h-screen pt-24 space-y-12">
       <TextType
         as="h1"
         text={['WELCOME TO BITRATE STUDIO']}
