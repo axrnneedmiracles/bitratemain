@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import BlurText from '@/components/blur-text';
 
 export const metadata: Metadata = {
-  title: 'Services | Studio Noir',
-  description: 'Discover the range of creative services offered by Studio Noir, from photography to web design.',
+  title: 'Services | BITRATE STUDIO',
+  description: 'Discover the range of creative services offered by BITRATE STUDIO, from photography to web design.',
 };
 
 export default function ServicesPage() {

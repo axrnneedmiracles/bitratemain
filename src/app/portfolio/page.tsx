@@ -2,7 +2,7 @@ import ChromaGrid from '@/components/chroma-grid';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Portfolio | Studio Noir',
+    title: 'Portfolio | BITRATE STUDIO',
     description: 'Explore our work in an interactive gallery.',
 };
 

@@ -5,7 +5,7 @@ export default function Home() {
   const galleryItems = [
     { image: '/blender_logo.png', text: 'Blender' },
     { image: '/davinci_logo.png', text: 'DaVinci Resolve' },
-    { image: '/studio_logo.png', text: 'Studio' },
+    { image: '/studio_logo.png', text: 'BITRATE STUDIO' },
     { image: '/aftereffects_logo.png', text: 'After Effects' },
     { image: '/cinema4d_logo.png', text: 'Cinema 4D' },
     { image: '/figma_logo.png', text: 'Figma' },
@@ -20,7 +20,7 @@ export default function Home() {
     <div className="flex-grow flex flex-col items-center justify-between h-screen py-10">
       <TextType
         as="h1"
-        text={['WELCOME TO OUR MEDIA STUDIO']}
+        text={['WELCOME TO BITRATE STUDIO']}
         typingSpeed={75}
         pauseDuration={1500}
         showCursor

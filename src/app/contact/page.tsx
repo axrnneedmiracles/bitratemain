@@ -3,8 +3,8 @@ import { Mail, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Studio Noir',
-  description: 'Get in touch with Studio Noir for collaborations, inquiries, or just to say hello.',
+  title: 'Contact Us | BITRATE STUDIO',
+  description: 'Get in touch with BITRATE STUDIO for collaborations, inquiries, or just to say hello.',
 };
 
 export default function ContactPage() {

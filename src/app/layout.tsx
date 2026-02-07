@@ -6,7 +6,7 @@ import StaggeredMenu from '@/components/staggered-menu';
 import LayoutClient from '@/components/layout-client';
 
 export const metadata: Metadata = {
-  title: 'Studio Noir',
+  title: 'BITRATE STUDIO',
   description: 'A professional portfolio for a creative media studio.',
 };
 

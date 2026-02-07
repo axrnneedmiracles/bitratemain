@@ -5,8 +5,8 @@ import { teamMembers } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | Studio Noir',
-  description: 'Learn about the vision and the talented team behind Studio Noir.',
+  title: 'About Us | BITRATE STUDIO',
+  description: 'Learn about the vision and the talented team behind BITRATE STUDIO.',
 };
 
 export default function AboutPage() {
@@ -14,7 +14,7 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <header className="text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">
-          About Studio Noir
+          About BITRATE STUDIO
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground">
           Crafting stories that captivate, inspire, and endure.
@@ -35,7 +35,7 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-bold font-headline mb-4">Our Vision</h2>
             <p className="text-muted-foreground leading-relaxed">
-              At Studio Noir, we believe in the power of visual storytelling. Our mission is to transform ideas into unforgettable visual experiences. We are a collective of passionate artists, designers, and strategists dedicated to pushing the boundaries of creativity and delivering excellence in every project. We strive to build lasting partnerships with our clients, understanding their goals to create work that is not only beautiful but also meaningful and effective.
+              At BITRATE STUDIO, we believe in the power of visual storytelling. Our mission is to transform ideas into unforgettable visual experiences. We are a collective of passionate artists, designers, and strategists dedicated to pushing the boundaries of creativity and delivering excellence in every project. We strive to build lasting partnerships with our clients, understanding their goals to create work that is not only beautiful but also meaningful and effective.
             </p>
           </div>
         </div>

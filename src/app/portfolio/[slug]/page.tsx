@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     .join(' ');
 
   return {
-    title: `${title} Projects | Studio Noir`,
+    title: `${title} Projects | BITRATE STUDIO`,
     description: `A list of sample projects for ${title}.`,
   };
 }
