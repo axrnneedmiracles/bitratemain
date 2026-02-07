@@ -501,7 +501,8 @@ class App {
 
         this.raycaster.castMouse(this.camera, this.mouse);
         
-        const intersects = this.raycaster.intersect(this.scene, { recursive: true });
+        const meshes = this.medias.map(media => media.plane);
+        const intersects = this.raycaster.intersectMeshes(meshes);
         
         if (intersects.length > 0) {
             const clickedPlane = intersects[0];
