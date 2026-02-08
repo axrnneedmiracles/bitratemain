@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -47,7 +48,7 @@ export default function RootLayout({
               socialItems={socialItems}
             />
            <SplashCursor
-            DENSITY_DISSIPATION={4}
+            DENSITY_DISSIPATION={4.0}
             SPLAT_RADIUS={0.1}
           />
            <div className="fixed top-0 left-0 -z-10 h-full w-full">

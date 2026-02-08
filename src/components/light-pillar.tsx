@@ -1,3 +1,4 @@
+
 'use client';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
@@ -18,21 +19,21 @@ const LightPillar = () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     currentMount.appendChild(renderer.domElement);
 
     // Post-processing
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
     const bloomEffect = new BloomEffect({
-      intensity: 1.5,
+      intensity: 0.8,
       luminanceThreshold: 0.1,
       luminanceSmoothing: 0.2,
     });
     composer.addPass(new EffectPass(camera, bloomEffect));
 
     // Pillar setup
-    const pillarCount = 50;
+    const pillarCount = 20;
     const pillarGeometry = new THREE.CylinderGeometry(0.1, 0.1, 20, 8);
     
     // Custom shader for glowing pillars
