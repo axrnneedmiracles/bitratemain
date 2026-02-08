@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import LightPillar from '@/components/light-pillar';
 import StaggeredMenu from '@/components/staggered-menu';
 import LayoutClient from '@/components/layout-client';
 
@@ -38,17 +37,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <head />
-      <body className="font-body antialiased flex flex-col min-h-screen">
+      <body className="font-body antialiased flex flex-col min-h-screen bg-background">
         <LayoutClient>
           <StaggeredMenu
               isFixed={true}
               items={menuItems}
               socialItems={socialItems}
             />
-          <div className="fixed inset-0 -z-30">
-            <LightPillar quality="low" />
-          </div>
-          <div className="fixed inset-0 bg-black/70 -z-20" />
 
           <div className="relative z-0 flex flex-col min-h-screen">
             <main className="flex-grow">{children}</main>
