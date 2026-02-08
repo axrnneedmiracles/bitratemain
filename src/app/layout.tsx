@@ -46,7 +46,7 @@ export default function RootLayout({
               socialItems={socialItems}
             />
           <div className="fixed inset-0 -z-30">
-            <LightPillar />
+            <LightPillar quality="low" />
           </div>
           <div className="fixed inset-0 bg-black/70 -z-20" />
 
