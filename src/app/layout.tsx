@@ -6,7 +6,6 @@ import { Toaster } from '@/components/ui/toaster';
 import StaggeredMenu from '@/components/staggered-menu';
 import LayoutClient from '@/components/layout-client';
 import LightPillar from '@/components/light-pillar';
-import SplashCursor from '@/components/splash-cursor';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -47,12 +46,21 @@ export default function RootLayout({
               items={menuItems}
               socialItems={socialItems}
             />
-           <SplashCursor
-            DENSITY_DISSIPATION={4.0}
-            SPLAT_RADIUS={0.1}
-          />
            <div className="fixed top-0 left-0 -z-10 h-full w-full">
-            <LightPillar />
+            <LightPillar
+              topColor="#5227FF"
+              bottomColor="#FF9FFC"
+              intensity={0.7}
+              rotationSpeed={0.3}
+              glowAmount={0.003}
+              pillarWidth={3}
+              pillarHeight={0.4}
+              noiseIntensity={0.3}
+              pillarRotation={25}
+              interactive={false}
+              mixBlendMode="screen"
+              quality="high"
+            />
           </div>
 
           <div className="relative z-0 flex flex-col min-h-screen">
